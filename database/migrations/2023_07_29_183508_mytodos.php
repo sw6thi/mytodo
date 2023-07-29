@@ -1,10 +1,8 @@
-<?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ImportTableFromPhpmyadmin extends Migration
+class CreateTodosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +11,9 @@ class ImportTableFromPhpmyadmin extends Migration
      */
     public function up()
     {
-        Schema::table('todos', function (Blueprint $table) {
-            //
+        Schema::create('todos', function (Blueprint $table) {
+            $table->integer('sno');
+            $table->string('todo');
         });
     }
 
@@ -25,8 +24,6 @@ class ImportTableFromPhpmyadmin extends Migration
      */
     public function down()
     {
-        Schema::table('todos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('todos');
     }
 }
